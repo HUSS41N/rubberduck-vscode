@@ -3,7 +3,7 @@ import { ConversationType } from "./ConversationType";
 import { loadConversationFromFile } from "./template/loadRubberduckTemplateFromFile";
 import { loadRubberduckTemplatesFromWorkspace } from "./template/loadRubberduckTemplatesFromWorkspace";
 import { parseRubberduckTemplate } from "./template/parseRubberduckTemplate";
-
+// todo:: look into rdt.md stuff to confg
 export class ConversationTypesProvider {
   private readonly extensionUri: vscode.Uri;
   private readonly extensionTemplates: string[] = [];
