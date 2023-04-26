@@ -352,19 +352,11 @@
         {
           "command": "rubberduck.touchBar.startChat",
           "group": "rubberduck"
-        },
-        {
-          "command": "rubberduck.touchBar.secureCode",
-          "group": "rubberduck"
         }
       ],
       "commandPalette": [
         {
           "command": "rubberduck.touchBar.startChat",
-          "when": "false"
-        },
-        {
-          "command": "rubberduck.touchBar.secureCode",
           "when": "false"
         }
       ],
@@ -415,7 +407,7 @@
       "activitybar": [
         {
           "id": "rubberduck",
-          "title": "Rubberduck",
+          "title": "Sudoviz",
           "icon": "media/sidebar-icon.svg"
         }
       ]
