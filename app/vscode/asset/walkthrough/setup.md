@@ -16,6 +16,8 @@ Once you have an API key, enter it with the `Rubberduck: Enter OpenAI API key` c
 - **rubberduck.action.startCustomChat.showInEditorContextMenu**: Show the "Start custom chat" action in the editor context menu, when you right-click on the code.
 - **rubberduck.action.editCode.showInEditorContextMenu**: Show the "Edit Code action in the editor context menu, when you right-click on the code.
 - **rubberduck.action.explainCode.showInEditorContextMenu**: Show the "Explain code" action in the editor context menu, when you right-click on the code.
+- **rubberduck.action.secureCode.showInEditorContextMenu**: Show the "Secure code" action in the editor context menu, when you right-click on the code.
+- **rubberduck.action.secureCfg.showInEditorContextMenu**: Show the "Create CFG" action in the editor context menu, when you right-click on the code.
 - **rubberduck.action.findBugs.showInEditorContextMenu**: Show the "Find bugs" action in the editor context menu, when you right-click on the code.
 - **rubberduck.action.generateUnitTest.showInEditorContextMenu**: Show the "Generate unit test" in the editor context menu, when you right-click on the code.
 - **rubberduck.action.diagnoseErrors.showInEditorContextMenu**: Show the "Diagnose errors" in the editor context menu, when you right-click on the code.

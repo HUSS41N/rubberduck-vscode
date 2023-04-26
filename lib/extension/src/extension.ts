@@ -97,6 +97,12 @@ export const activate = async (context: vscode.ExtensionContext) => {
     vscode.commands.registerCommand("rubberduck.explainCode", () => {
       chatController.createConversation("explain-code");
     }),
+    vscode.commands.registerCommand("rubberduck.secureCode", () => {
+      chatController.createConversation("secure-code");
+    }),
+    vscode.commands.registerCommand("rubberduck.secureCfg", () => {
+      chatController.createConversation("secure-cfg");
+    }),
     vscode.commands.registerCommand("rubberduck.findBugs", () => {
       chatController.createConversation("find-bugs");
     }),
@@ -142,6 +148,9 @@ export const activate = async (context: vscode.ExtensionContext) => {
     }),
     vscode.commands.registerCommand("rubberduck.touchBar.startChat", () => {
       chatController.createConversation("chat-en");
+    }),
+    vscode.commands.registerCommand("rubberduck.touchBar.secureCode", () => {
+      chatController.createConversation("secure-code");
     }),
     vscode.commands.registerCommand("rubberduck.showChatPanel", async () => {
       await chatController.showChatPanel();

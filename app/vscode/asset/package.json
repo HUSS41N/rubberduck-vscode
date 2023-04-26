@@ -1,8 +1,8 @@
 {
   "publisher": "rubberduck",
-  "name": "rubberduck-vscode",
+  "name": "sudoviz-vscode",
   "version": "1.15.0",
-  "displayName": "Rubberduck - ChatGPT for Visual Studio Code",
+  "displayName": "Sudoviz - ChatGPT for Visual Studio Code",
   "description": "Generate code, edit code, explain code, generate tests, find bugs, diagnose errors, and even create your own conversation templates.",
   "keywords": [
     "ai",
@@ -72,6 +72,18 @@
         "icon": "$(comment-discussion)"
       },
       {
+        "command": "rubberduck.secureCode",
+        "title": "Secure Code 🛡️",
+        "category": "Rubberduck",
+        "icon": "$(shield)"
+      },
+      {
+        "command": "rubberduck.secureCfg",
+        "title": "Create CFG 🔄",
+        "category": "Rubberduck",
+        "icon": "$(type-hierarchy-sub)"
+      },
+      {
         "command": "rubberduck.generateCode",
         "title": "Generate Code 🪄",
         "category": "Rubberduck",
@@ -138,7 +150,7 @@
       }
     ],
     "configuration": {
-      "title": "Rubberduck",
+      "title": "Sudoviz",
       "properties": {
         "rubberduck.syntaxHighlighting.useVisualStudioCodeColors": {
           "type": "boolean",
@@ -171,6 +183,18 @@
           "scope": "application"
         },
         "rubberduck.action.findBugs.showInEditorContextMenu": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
+          "scope": "application"
+        },
+        "rubberduck.action.secureCode.showInEditorContextMenu": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
+          "scope": "application"
+        },
+        "rubberduck.action.secureCfg.showInEditorContextMenu": {
           "type": "boolean",
           "default": true,
           "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
@@ -264,6 +288,26 @@
         "command": "rubberduck.generateCode",
         "when": "!isMac",
         "key": "Ctrl+Alt+g"
+      },
+      {
+        "command": "rubberduck.secureCode",
+        "when": "isMac",
+        "key": "Ctrl+Cmd+s"
+      },
+      {
+        "command": "rubberduck.secureCode",
+        "when": "!isMac",
+        "key": "Ctrl+Alt+s"
+      },
+      {
+        "command": "rubberduck.secureCfg",
+        "when": "isMac",
+        "key": "Ctrl+Cmd+f"
+      },
+      {
+        "command": "rubberduck.secureCfg",
+        "when": "!isMac",
+        "key": "Ctrl+Alt+f"
       }
     ],
     "menus": {
@@ -292,17 +336,35 @@
           "command": "rubberduck.getStarted",
           "when": "view == rubberduck.chat",
           "group": "navigation@9"
+        },
+        {
+          "command": "rubberduck.secureCode",
+          "when": "view == rubberduck.chat",
+          "group": "navigation@4"
+        },
+        {
+          "command": "rubberduck.secureCfg",
+          "when": "view == rubberduck.chat",
+          "group": "navigation@5"
         }
       ],
       "touchBar": [
         {
           "command": "rubberduck.touchBar.startChat",
           "group": "rubberduck"
+        },
+        {
+          "command": "rubberduck.touchBar.secureCode",
+          "group": "rubberduck"
         }
       ],
       "commandPalette": [
         {
           "command": "rubberduck.touchBar.startChat",
+          "when": "false"
+        },
+        {
+          "command": "rubberduck.touchBar.secureCode",
           "when": "false"
         }
       ],
@@ -323,14 +385,19 @@
           "when": "config.rubberduck.action.explainCode.showInEditorContextMenu && editorHasSelection"
         },
         {
+          "command": "rubberduck.secureCode",
+          "group": "rubberduck",
+          "when": "config.rubberduck.action.secureCode.showInEditorContextMenu && editorHasSelection"
+        },
+        {
+          "command": "rubberduck.secureCfg",
+          "group": "rubberduck",
+          "when": "config.rubberduck.action.secureCfg.showInEditorContextMenu && editorHasSelection"
+        },
+        {
           "command": "rubberduck.findBugs",
           "group": "rubberduck",
           "when": "config.rubberduck.action.findBugs.showInEditorContextMenu && editorHasSelection"
-        },
-        {
-          "command": "rubberduck.generateUnitTest",
-          "group": "rubberduck",
-          "when": "config.rubberduck.action.generateUnitTest.showInEditorContextMenu && editorHasSelection"
         },
         {
           "command": "rubberduck.diagnoseErrors",
