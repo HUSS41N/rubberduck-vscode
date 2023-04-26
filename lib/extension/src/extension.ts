@@ -8,9 +8,9 @@ import { indexRepository } from "./index/indexRepository";
 import { getVSCodeLogLevel, LoggerUsingVSCodeOutput } from "./logger";
 import { ApiKeyManager } from "./openai/ApiKeyManager";
 import { getVSCodeOpenAIBaseUrl, OpenAIClient } from "./openai/OpenAIClient";
-const path = require("path");
-const fs = require("fs");
-const { spawn } = require("child_process");
+import path from "path";
+import fs from "fs";
+import { spawn } from "child_process";
 
 export const activate = async (context: vscode.ExtensionContext) => {
   const apiKeyManager = new ApiKeyManager({
