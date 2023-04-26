@@ -143,6 +143,10 @@
         "icon": "$(output)"
       },
       {
+        "command": "rubberduck.showGraph",
+        "title": "Show Graph"
+      },
+      {
         "command": "rubberduck.indexRepository",
         "title": "Index Repository",
         "category": "Rubberduck",

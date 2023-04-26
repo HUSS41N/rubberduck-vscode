@@ -8,6 +8,9 @@ import { indexRepository } from "./index/indexRepository";
 import { getVSCodeLogLevel, LoggerUsingVSCodeOutput } from "./logger";
 import { ApiKeyManager } from "./openai/ApiKeyManager";
 import { getVSCodeOpenAIBaseUrl, OpenAIClient } from "./openai/OpenAIClient";
+const path = require("path");
+const fs = require("fs");
+const { spawn } = require("child_process");
 
 export const activate = async (context: vscode.ExtensionContext) => {
   const apiKeyManager = new ApiKeyManager({
@@ -74,6 +77,34 @@ export const activate = async (context: vscode.ExtensionContext) => {
 
   context.subscriptions.push(
     vscode.window.registerWebviewViewProvider("rubberduck.chat", chatPanel),
+    vscode.commands.registerCommand("rubberduck.showGraph", () => {
+      vscode.window
+        .showInputBox({
+          prompt: "Enter the dot directions to generate graph",
+        })
+        .then((dotDirections: string | undefined) => {
+          if (dotDirections) {
+            const svgPath = path.join(__dirname, "graph.svg");
+            const dotProcess = spawn("dot", ["-Tsvg", "-o", svgPath]);
+            dotProcess.stdin.write(dotDirections);
+            dotProcess.stdin.end();
+            dotProcess.on("close", (code: number) => {
+              if (code === 0) {
+                vscode.workspace
+                  .openTextDocument(svgPath)
+                  .then((doc: vscode.TextDocument) => {
+                    vscode.window.showTextDocument(doc, {
+                      preview: false,
+                      viewColumn: vscode.ViewColumn.Active,
+                    });
+                  });
+              } else {
+                vscode.window.showErrorMessage("Failed to generate graph.");
+              }
+            });
+          }
+        });
+    }),
     vscode.commands.registerCommand(
       "rubberduck.enterOpenAIApiKey",
       apiKeyManager.enterOpenAIApiKey.bind(apiKeyManager)

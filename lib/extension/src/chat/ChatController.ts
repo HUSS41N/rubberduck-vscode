@@ -54,7 +54,7 @@ export class ChatController {
     conversation: T
   ): Promise<T> {
     this.chatModel.addAndSelectConversation(conversation);
-
+    console.log("Conversation ", conversation);
     await this.showChatPanel();
     await this.updateChatPanel();
 
@@ -156,7 +156,7 @@ export class ChatController {
 
         return;
       }
-
+      console.log("Response ", result.conversation.answer());
       await this.addAndShowConversation(result.conversation);
 
       if (result.shouldImmediatelyAnswer) {
